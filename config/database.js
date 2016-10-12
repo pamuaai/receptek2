@@ -30,7 +30,7 @@ module.exports = {
   sqlite: {
     client: 'sqlite3',
     connection: {
-      filename: Helpers.databasePath('development.sqlite')
+      filename: Helpers.databasePath('receptek.sqlite')
     },
     useNullAsDefault: true
   },

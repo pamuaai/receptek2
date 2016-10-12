@@ -52,7 +52,27 @@
             <button class="btn btn-info" type="button">Mehet!</button>
         </span>
         </div><!-- /input-group -->
-    </div>
+
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">{{ category.name }}</div>
+
+                    <!-- List group -->
+                    <ul class="list-group">
+                        {% for recipe in category.topRecipes %}
+                        <li class="list-group-item">{{ recipe.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
