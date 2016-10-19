@@ -8,10 +8,18 @@ class RecipeController {
 
         for (const category of categories) {
             const topRecipes = yield category.recipes().limit(3).fetch()
-            category.topRecipes = topRecipes
+            category.topRecipes = topRecipes.toJSON()
         }
 
         yield res.sendView('main', {
+            categories: categories.toJSON()
+        })
+    }
+
+    * create (req, res) {
+        const categories = yield Category.all()
+
+        yield res.sendView('recipeCreate', {
             categories: categories.toJSON()
         })
     }

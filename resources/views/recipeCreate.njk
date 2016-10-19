@@ -1,0 +1,42 @@
+{% extends 'master' %}
+
+{% block content %}
+<h1>Új recept beküldése</h1>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputName" class="col-sm-2 control-label">Recept neve</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName" name="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCategory" class="col-sm-2 control-label">Kategória</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="inputCategory" name="category">
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputIngredients" class="col-sm-2 control-label">Hozzávalók</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputIngredients" name="ingredients"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputInstructions" class="col-sm-2 control-label">Elkészítés módja</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputInstructions" name="instructions"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success">Recept beküldése</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
