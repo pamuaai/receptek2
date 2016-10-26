@@ -1,0 +1,57 @@
+{% extends 'master' %}
+
+{% block content %}
+<h1>Recept Módosítás</h1>
+
+{% if old('errors') %}
+<div class="alert alert-danger" role="alert">
+    <ul>
+    {% for error in old('errors') %}
+    <li>{{ error.message }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form class="form-horizontal" action="/recipe/{{ recipe.id }}/edit" method="POST">
+  {{ csrfField }}
+  <div class="form-group">
+    <label for="inputName" class="col-sm-2 control-label">Recept neve</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName" name="name" value="{{ recipe.name }}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCategory" class="col-sm-2 control-label">Kategória</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="inputCategory" name="category">
+        {% for category in categories %}
+        {% if category.id == recipe.category_id %}
+        <option selected value="{{ category.id }}">{{ category.name }}</option>
+        {% else %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputIngredients" class="col-sm-2 control-label">Hozzávalók</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputIngredients" name="ingredients">{{ recipe.ingredients }}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputInstructions" class="col-sm-2 control-label">Elkészítés módja</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="inputInstructions" name="instructions">{{ recipe.instructions }}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success">Recept mentése</button>
+      <a class="btn btn-default" href="/recipe/{{ recipe.id }}" role="button">Vissza</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

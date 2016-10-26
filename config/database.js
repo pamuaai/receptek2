@@ -32,7 +32,8 @@ module.exports = {
     connection: {
       filename: Helpers.databasePath('receptek.sqlite')
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
+    debug: true
   },
 
   /*
