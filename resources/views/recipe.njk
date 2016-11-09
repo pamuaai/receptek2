@@ -6,10 +6,11 @@
 <pre>{{ recipe.ingredients }}</pre>
 <p>{{ recipe.instructions }}</p>
 
+ {% if currentUser %}
 <form action="/recipe/{{ recipe.id }}/delete" method="POST">
     {{ csrfField }}
     <a class="btn btn-primary" href="/recipe/{{ recipe.id }}/edit" role="button">Módosítás</a>
     <button type="submit" class="btn btn-danger">Törlés</button>    
 </form>
-
+{% endif %}
 {% endblock %}
